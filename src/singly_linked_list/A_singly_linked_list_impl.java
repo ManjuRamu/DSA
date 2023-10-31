@@ -275,7 +275,21 @@ public class A_singly_linked_list_impl {
 		else
 			head = newNode;
 	}
-
+    public boolean removeElement(int number) {
+    	ListNode current = head;
+    	if(head == null ) throw new IllegalArgumentException("list not having data");
+    	ListNode pre = null;
+    	while (current != null && current.data != number) {
+    		pre = current;
+    		current = current.next;
+		
+    	}
+    	if(current == null) throw new IllegalArgumentException(number+" not present");
+    	if(current == head) head= head.next;
+    	else pre.next = current.next;
+    	return true;
+    	
+    }
 	public static void main(String[] args) {
 		A_singly_linked_list_impl sll = new A_singly_linked_list_impl();
 
@@ -290,10 +304,9 @@ public class A_singly_linked_list_impl {
 		second.next = third; // 20 -> 30
 //		third.next = fourth; // 30 -> 15
 		sll.add(5);
-
 		sll.add(6);
 		sll.addAsSorted(5);
-		sll.addAsSorted(4);
+		sll.removeElement(0);
 //		sll.reverse();
 		sll.print();
 
