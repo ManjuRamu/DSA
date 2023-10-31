@@ -117,26 +117,26 @@ public class A_singly_linked_list_impl {
 			System.out.println(e);
 			return false;
 		}
-		}
-	
+	}
+
 	public boolean deleteFirst() {
 		try {
-			if(head != null) {
+			if (head != null) {
 				head = head.next;
 			}
-			
+
 		} catch (Exception e) {
 			System.out.println(e);
 			return false;
 		}
 		return true;
 	}
-	
+
 	public boolean deleteLast() {
 		try {
 			ListNode current = head;
 			ListNode previous = current;
-			while(current.next != null) {
+			while (current.next != null) {
 				previous = current;
 				current = current.next;
 			}
@@ -147,47 +147,154 @@ public class A_singly_linked_list_impl {
 		}
 		return true;
 	}
-	
+
 	/*
-	 * position 0 ->  head so on
-	 * */
+	 * position 0 -> head so on
+	 */
 	public boolean delete(int position) {
-	try {
-		if(head == null) return false;
-	    int count = 0;
-	    ListNode current = head;
-	    ListNode previous = null;
-		while(position >= 0 && current != null) {
-			previous = current;
+		try {
+			if (head == null)
+				return false;
+			if (position == 0) {
+				return deleteFirst();
+			}
+			int count = 0;
+			ListNode previous = head;
+			while (position - 1 > count && previous.next != null) {
+				previous = previous.next;
+				count++;
+			}
+			ListNode current = previous.next;
+			// out of position checker
+			if (current == null)
+				return false;
+			previous.next = current.next;
+
+		} catch (Exception e) {
+			System.out.println(e);
+			return false;
+		}
+		return true;
+	}
+
+	public boolean search(int data) {
+		ListNode current = head;
+		while (current != null && head != null) {
+			if (current.data == data)
+				return true;
 			current = current.next;
-			count++;
+		}
+		return false;
+	}
+
+	public boolean reverse() {
+		ListNode previous = null;
+		ListNode next = null;
+		while (head != null) {
+			next = head.next;
+			head.next = previous;
+			previous = head;
+			head = next;
+		}
+		head = previous;
+		return false;
+
+	}
+
+	public Integer middleElement() {
+		if (head == null)
+			return null;
+		ListNode slowPtr = head;
+		ListNode fastPtr = head;
+//		ListNode pre =null; // one more element
+		while (fastPtr != null && fastPtr.next != null) {
+			fastPtr = fastPtr.next.next;
+//			pre = slowPtr;
+			slowPtr = slowPtr.next;
+		}
+//		return pre.data;
+		return slowPtr.data;
+	}
+
+	public Integer getNthElementFromBegining(int position) {
+
+		if (head == null)
+			return null;
+		ListNode current = head;
+		while (current != null && position > 0) {
+			current = current.next;
 			position--;
 		}
-		
-		
-		
-	} catch (Exception e) {
-      System.out.println(e);
-      return false;
+		if (position != 0)
+			return null;
+		else
+			return current != null ? current.data : null;
+
 	}
-	return true;
+
+	public Integer getNthElementFromEnd(int position) {
+		if (head == null)
+			return null;
+		ListNode mainPtr = head;
+		ListNode scndPtr = head;
+		while (scndPtr != null && position > 0) {
+			scndPtr = scndPtr.next;
+			position--;
+		}
+		if (scndPtr == null)
+			return null;
+
+		while (scndPtr.next != null) {
+			scndPtr = scndPtr.next;
+			mainPtr = mainPtr.next;
+		}
+		return mainPtr.data;
 	}
-	
+
+	public void removeDuplicateFromsortedList() {
+		ListNode current = head;
+		while (current != null && current.next != null) {
+			if (current.data == current.next.data) {
+				current.next = current.next.next;
+			} else
+				current = current.next;
+		}
+	}
+
+	public void addAsSorted(int data) {
+		ListNode current = head;
+		ListNode newNode = new ListNode(data);
+		ListNode temp = null;
+		while (current != null && current.data < newNode.data) {
+			temp = current;
+			current = current.next;
+		}
+		newNode.next = current;
+		if (temp != null)
+			temp.next = newNode;
+		else
+			head = newNode;
+	}
 
 	public static void main(String[] args) {
 		A_singly_linked_list_impl sll = new A_singly_linked_list_impl();
 
 		// creates the nodes without refer to next node
-		sll.head = new ListNode(10);
-		ListNode second = new ListNode(20);
-		ListNode third = new ListNode(30);
-		ListNode fourth = new ListNode(40);
+		sll.head = new ListNode(1);
+		ListNode second = new ListNode(2);
+		ListNode third = new ListNode(3);
+//		ListNode fourth = new ListNode();
 
 		// refer to next node i.e chain the nodes to make as a list
 		sll.head.next = second; // 10 -> 20
 		second.next = third; // 20 -> 30
-		third.next = fourth; // 30 -> 15
-		sll.deleteLast();
+//		third.next = fourth; // 30 -> 15
+		sll.add(5);
+
+		sll.add(6);
+		sll.addAsSorted(5);
+		sll.addAsSorted(4);
+//		sll.reverse();
 		sll.print();
 
 	}
