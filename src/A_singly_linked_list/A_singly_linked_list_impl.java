@@ -1,4 +1,4 @@
-package singly_linked_list;
+package A_singly_linked_list;
 
 public class A_singly_linked_list_impl {
 	private ListNode head;
