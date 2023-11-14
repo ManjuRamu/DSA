@@ -20,7 +20,7 @@ public class A_Queue {
 		Node third = new Node(3);
 		Node fourth = new Node(4);
 		Node fifth = new Node(5);
-		
+
 		A_Queue queue = new A_Queue();
 		queue.front = first;
 		first.next = second;

@@ -15,6 +15,14 @@ public class B_QueueImpl {
 
 	}
 
+	private int remove() {
+		if(front == null) throw new RuntimeException("Queue is empty");
+		Node temp = front;
+		front = front.next;
+		return temp.data;
+
+	}
+
 	private void add(int data) {
 		Node newNode = new Node(data);
 		if (front == null) {
@@ -25,10 +33,12 @@ public class B_QueueImpl {
 			rear = newNode;
 		}
 	}
+
 	private void display() {
-         Node temp = front;
-         while (temp != null) {
-			System.out.print(temp.data +" -> ");
+		Node temp = front;
+		while (temp != null) {
+			System.out.print(temp.data + " -> ");
+			temp = temp.next;
 		}
 	}
 
@@ -37,7 +47,16 @@ public class B_QueueImpl {
 		queue.add(0);
 		queue.add(1);
 		queue.add(3);
+		queue.add(4);
+		queue.add(5);
 		queue.display();
+		System.out.println();
+		System.out.println(queue.remove());
+		System.out.println(queue.remove());
+		System.out.println(queue.remove());
+		queue.display();
+
+		
 	}
 
 }
