@@ -1,13 +1,16 @@
-let num  = 5;
-let res = 0
+console.time("fib");
+let num = 5;
+let res = 0;
 
+let mem = new Map();
+mem.set(0, 0);
+mem.set(1, 1);
 function fib(num) {
-   if(num == 0 || num == 1){
-    return num;
-   }
- res = fib(num-1)+fib(num-2)
- console.log(res)
- return res;
+  if (mem.has(num)) return mem.get(num);
+  mem.set(num, fib(num - 1) + fib(num - 2));
+  return mem.get(num);
 }
 
-console.log(fib(5))
+console.log(fib(20));
+
+console.timeEnd("fib");
