@@ -1,7 +1,8 @@
 const ranges = {
     0:[2,3], //7
     1:[5,8], //30
-    2:[3,7] //30
+    2:[3,7], //30
+    3:[0,5]
 }
 const arr = [1,2,3,4,5,6,7,8,9,10]
 /*
@@ -22,7 +23,7 @@ function sumOfEelementsInRanges(arr,ranges){
     Object.keys(ranges).forEach((key) =>{
         const [min, max] = ranges[key];
         ranges[key].sum =  
-            preSumArr[max] - preSumArr[min-1]
+            preSumArr[max] ?? 0 - preSumArr[min-1] ?? 0
         
     })
 }
