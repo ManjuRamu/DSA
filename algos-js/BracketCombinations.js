@@ -34,5 +34,5 @@ function BracketCombinations(n) {
   }
   return combinations;
 }
-let value = BracketCombinations(5);
+let value = BracketCombinations(3);
 console.log(value, " \n", value.length);

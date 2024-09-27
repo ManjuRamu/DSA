@@ -12,6 +12,14 @@ const arr = [
 30 31 32 33
 */
 
+/*
+13  9  5 1
+14 11 12 2
+15 21 22 3
+16 12 8  4
+*/
+
+
 // transpose
 for (let i = 0; i < arr.length; i++) {
   for (let j = i; j < arr[i].length; j++) {
@@ -21,12 +29,27 @@ for (let i = 0; i < arr.length; i++) {
     arr[j][i] = temp;
   }
 }
-// column reverse of transpose
-for(let start = 0, end = arr.length-1; start < end ; start++, end--){
-  const temp = arr[start]
-  arr[start] = arr[end];
-  arr[end] = temp
+
+// clock-wise 90
+for(let i = 0; i<arr.length; i++){
+  arr[i].reverse()
+  // for(let start= 0 , end = arr[i].length-1; start < end; start++, end--){
+   
+  //   const temp =  arr[i][start]
+  //   arr[i][start] = arr[i][end] 
+  //   arr[i][end] = temp;
+  // }
 }
+
+
+// column reverse of transpose
+// anti clock-wise 90
+// for(let start = 0, end = arr.length-1; start < end ; start++, end--){
+//   const temp = arr[start]
+//   arr[start] = arr[end];
+//   arr[end] = temp
+// }
+// arr.reverse()
 for (let k = 0; k < arr.length; k++) {
   let str = ""
   for (let l = 0; l < arr[k].length; l++) {
