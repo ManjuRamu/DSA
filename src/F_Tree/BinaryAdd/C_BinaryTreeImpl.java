@@ -16,8 +16,8 @@ public class C_BinaryTreeImpl {
 
 	void add(int data, HelperQueueForBinaryAdd queue) {
 		BinaryNode newNode = new BinaryNode(data);
-		queue.addLeafNodeRef(newNode);
-		queue.addLeafNodeRef(newNode);
+		queue.addLeafNodeRef(newNode); // left pop
+		queue.addLeafNodeRef(newNode); // right pop
 		if (root == null) {
 			root = newNode;
 		} else {
@@ -37,6 +37,14 @@ public class C_BinaryTreeImpl {
 		   preOrderTravese(root.right);
 		  
 		}
+	private void inOrderTravese(BinaryNode root) {
+		   if(root == null) return;
+		   inOrderTravese(root.left);
+		  
+		   System.out.print(root.data +" -> "); 
+		   inOrderTravese(root.right);
+		  
+		}
 	private void preOrderTraveseItreator() {
 		HelperStackForDisplay stack  = new HelperStackForDisplay();
 		stack.push(root);
@@ -52,14 +60,7 @@ public class C_BinaryTreeImpl {
 			
 		}
 }
-	private void inOrderTravese(BinaryNode root) {
-		   if(root == null) return;
-		   inOrderTravese(root.left);
-		  
-		   System.out.print(root.data +" -> "); 
-		   inOrderTravese(root.right);
-		  
-		}
+
 	private void inOrderTraveseIterator() {
 		 BinaryNode temp = root;
 		 HelperStackForDisplay stack = new HelperStackForDisplay();
