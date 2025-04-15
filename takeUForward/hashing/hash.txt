@@ -1,0 +1,31 @@
+Internal hashing
+
+ 1. Dvivison
+ 2. Folding
+ 3. Mid square 
+
+Dvivison: 
+    let's say we have to has some elements = [1,34,5,66,78,28,18,28]
+    Sol: 
+     take fixed size of array 10.
+     take mod of each elements and store it in respective index.
+     index
+     0 
+     1 - 1
+     2
+     3
+     4 -34
+     5 -5
+     6 -66
+     7
+     8 -18->28->28->78
+     9
+     10
+    in this above we have 18,28,7 has same mode, so store them in sorted list;
+    18->28->28->78 called linear chaing
+
+    collisions: 
+    if an input array has same mode result 
+    every this goes in same index and so it take O(n)to read called 'collision' 
+
+    
