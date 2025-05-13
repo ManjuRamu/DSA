@@ -1,5 +1,5 @@
 function sort() {
-  const arr = [4, 6, 2, 5, 7, 9,3, 1, 4];
+  const arr = [9,8,7,6,5,4,3,2,1];
   quickSort(arr, 0, arr.length - 1);
   console.log(arr);
 }
